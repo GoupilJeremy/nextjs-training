@@ -3,7 +3,9 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -13,5 +15,12 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^9.0.5",
+    "@storybook/addon-onboarding": "^9.0.5",
+    "@storybook/nextjs": "^9.0.5",
+    "prop-types": "^15.8.1",
+    "storybook": "^9.0.5"
   }
 }
