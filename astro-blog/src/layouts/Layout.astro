@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+const { title, home } = Astro.props;
+const name = 'Goupil Jeremy';
+export const siteTitle = 'Astro Sample Website';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="Learn how to build a personal website using Astro"
+    />
+    <meta
+      property="og:image"
+      content="https://upload.wikimedia.org/wikipedia/commons/c/c4/Astro-logo.svg"
+    />
+    <meta name="og:title" content={siteTitle} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        {home ? (
+          <>
+            <img
+              src="/images/profile.jpg"
+              class="borderCircle"
+              height={144}
+              width={144}
+              alt={name}
+            />
+            <h1 class="heading2Xl">{name}</h1>
+          </>
+        ) : (
+          <>
+            <a href="/">
+              <img
+                src="/images/profile.jpg"
+                class="borderCircle"
+                height={108}
+                width={108}
+                alt={name}
+              />
+            </a>
+            <h2 class="headingLg">
+              <a href="/" class="colorInherit">
+                {name}
+              </a>
+            </h2>
+          </>
+        )}
+      </header>
+      <main>
+        <slot />
+      </main>
+      {!home && (
+        <div class="backToHome">
+          <a href="/">← Back to home</a>
+        </div>
+      )}
+    </div>
+    <style is:global>
+      .container {
+        max-width: 36rem;
+        padding: 0 1rem;
+        margin: 3rem auto 6rem;
+      }
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </body>
+</html>
